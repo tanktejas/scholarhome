@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../footer/footer";
-import "./Home.css";
+import "./Ho.css";
 // import "./nicepage.css";
 function Team() {
   return (

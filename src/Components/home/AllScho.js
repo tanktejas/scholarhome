@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-
+import url from "../images/scholaship.png";
 
 // importing all files
 import Card from "../Card/card";

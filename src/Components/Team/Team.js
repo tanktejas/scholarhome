@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../footer/footer";
 import "./Home.css";
-import "./nicepage.css";
+// import "./nicepage.css";
 function Team() {
   return (
     <div class="u-body u-xl-mode" style={{backgroundImage: 'url("pattern-bg.jpg")'}}>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-// import url from "images/scholaship.png";
+import url from "./scholaship.png";
 
 // importing all files
 import Card from "../Card/card";
@@ -41,7 +41,7 @@ function Home() {
             </div>
 
             <a href="https://svgshare.com/s/gH0" className="right">
-              <img class="img-fluid  d-none d-sm-block" src="images/scholarship.png" title="" />
+              <img class="img-fluid  d-none d-sm-block" src={url} title="" />
             </a>
           </div>
         </div>

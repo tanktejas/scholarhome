@@ -17,7 +17,7 @@ function Card() {
             <CalendarMonthIcon />{" "}
             <span className="dedy"> Deadline : March 3 2021</span>
           </p>
-          <h1 className="font-bold text-[20px] stag" style={{textDecoration:"none"}}>
+          <h1 className=" text-[20px] stag" style={{textDecoration:"none"}}>
             Mukhya mantri Yuva swavlamban youjna
           </h1>
           <div className="bodypart">

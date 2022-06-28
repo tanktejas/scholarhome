@@ -7,6 +7,7 @@ import Home from "./Components/home/home";
 import Header from "./Components/Navbar/Header"
 import AboutUsPage from "./Components/AboutUsPage";
 import AllScho from "./Components/home/AllScho";
+import Team from "./Components/Team/Team"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
          
           <Route exact path="/ViewAllScholarships" element={<AllScho/>}></Route>
+          <Route exact path="/Team" element={<Team/>}></Route>
           <Route exact path="/About-Scholar" element={<AboutUsPage/>}></Route>
         </Routes>
        

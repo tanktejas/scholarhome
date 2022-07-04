@@ -12,6 +12,7 @@ import Details from "./Components/Details/Details";
 import AllCard from "./Components/Scholarship detail/schodetail";
 
 import Contact from "./Components/Contact/Contact";
+import Dataform from "./Components/dataform/dataform";
 function App() {
   return (
     <>
@@ -28,12 +29,16 @@ function App() {
           <Route exact path="/Team" element={<Team />}></Route>
           <Route exact path="/scholarship-info" element={<Details />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
+
+          <Route exact path="/form" element={<Dataform/>}></Route>
+
           <Route
             exact
             path="/scholarship/:schoid"
             element={<AllCard />}
           ></Route>
           <Route exact path="/contact" element={<Contact />}></Route>
+
         </Routes>
       </BrowserRouter>
     </>

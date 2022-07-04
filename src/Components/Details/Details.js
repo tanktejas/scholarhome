@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./det.css";
 import "../main.css";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -6,46 +6,77 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PublicIcon from "@mui/icons-material/Public";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Footer from "../footer/footer";
+import Card from "../Card/card";
 
-function Details() {
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  doc,
+} from "firebase/firestore";
+
+import { db } from "../DB/firebase";
+import { Link } from "react-router-dom";
+import { color } from "@mui/system";
+
+function Details({ data }) {
+  const [scholar, setscho] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "Scholarships"));
+    onSnapshot(q, (qS) => {
+      let data = qS.docs;
+      setscho(data.slice(0, 2));
+    });
+  }, []);
+
+  if (scholar.length == 0) {
+    return (
+      <>
+        <h1>Loading...</h1>
+      </>
+    );
+  }
+  console.log(scholar);
+
   return (
     <div>
-    <div class=" ccc">
-  <div class="  uniqq">
-     
-
-        <div class="siz25 itemm ">
-          <AccessTimeIcon/>
-          <div class="fleep">
-          <h4>Last Updated..</h4>
-          <h6>25 min ago</h6>
+      <div class=" ccc">
+        <div class="  uniqq">
+          <div class="siz25 itemm ">
+            <AccessTimeIcon />
+            <div class="fleep">
+              <h4>Last Updated..</h4>
+              <h6>25 min ago</h6>
+            </div>
+          </div>
+          <div class="siz25 itemm">
+            <EmojiEventsIcon />
+            <div class="fleep">
+              <h4>Region</h4>
+              <h6>{data.region.toUpperCase()}</h6>
+            </div>
+          </div>
+          <div class="siz25 itemm">
+            <PublicIcon />
+            <div class="fleep">
+              <h4>Award</h4>
+              <h6>
+                Described in <strong> Benefits</strong>
+              </h6>
+            </div>
+          </div>
+          <div class="siz25 itemm">
+            <CalendarMonthIcon />
+            <div class="fleep">
+              <h4>Deadline</h4>
+              <h6>{data.closeingDate}</h6>
+            </div>
           </div>
         </div>
-        <div class="siz25 itemm">
-          <EmojiEventsIcon />
-          <div class="fleep">
-          <h4>Region</h4>
-          <h6>INDIA</h6>
-          </div>
-        </div>
-        <div class="siz25 itemm">
-          <PublicIcon />
-          <div class="fleep">
-          <h4>Award</h4>
-          <h6>Rs.40000 per year</h6>
-          </div>
-        </div>
-        <div class="siz25 itemm">
-          <CalendarMonthIcon />
-          <div class="fleep">
-          <h4>Deadline</h4>
-          <h6>26/02/2022</h6>
-          </div>
-        </div>
-        </div>
-
       </div>
 
       <div class="common">
@@ -59,68 +90,29 @@ function Details() {
           >
             <ul>
               <li>
-                <h5>
-                Foundation For Excellence FFE For Navodian's 
-                </h5>
+                <h5>{data.name}</h5>
                 <article class="brandScholarshipDetails_content__1uj_y">
                   <article class="brandScholarshipDetails_contentBoxWrapper___GQGi">
                     <span class="brandScholarshipDetails_calendarIcon__2-5hX">
                       <CalendarMonthIcon />
-                      <p>Deadline 05-Jul-2022</p>
+                      <p>Deadline : {data.closeingDate}</p>
                     </span>
-                    <article class="brandScholarshipDetails_sectionBox__yP4qi brandScholarshipDetails_firstElem__2pjgC">
-                      <span class="brandScholarshipDetails_sectionTitle__2t6sl  sec-t">
-                        About This Scholarship Program
-                      </span>
-                      <div>
-                        <ul>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                            The Foundation for Excellence (FFE) was founded with the mission to award college scholarships to students who, although financially constrained, showed great promise in the Engineering, Medical, BPharm and law programs, these being some of the most expensive higher education programs in India. Apart from FFE’s alumni, who support future scholars like themselves, donations come from all around the world from individual donors, corporations and foundations.
-                            </li>
-                          </div>
-                          
-                        </ul>
-                      </div>
-                    </article>
                     <article class="brandScholarshipDetails_sectionBox__yP4qi brandScholarshipDetails_firstElem__2pjgC">
                       <span class="brandScholarshipDetails_sectionTitle__2t6sl  sec-t">
                         Eligibility
                       </span>
                       <div>
                         <ul>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                            Family income should less than 2.5 Lac and enrolled in B.E/B.TECHLac
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                            Only Professional Degree Courses Eligible For Scholarships Are B.E./B.Tech.
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                            Only First-Year Applicants Beginning Their Studies In B.E., B.Tech, Integrated 5-Year Dual-Degree M.Tech ,MBBS, BPharm And LLB Are Eligible.
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                            Admission To Professional Degree Courses/Institutions Is Based On The Merit Rank Awarded At The State Or National Level.
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />{" "}
-                            <li>
-                              Must be from the economically weaker or
-                              moderate-income group of the society
-                            </li>
-                          </div>
+                          {data.eligiblity.map((item) => {
+                            return (
+                              <>
+                                <div class="merge">
+                                  <ChevronRightIcon />
+                                  <li>{item}</li>
+                                </div>
+                              </>
+                            );
+                          })}
                         </ul>
                       </div>
                     </article>
@@ -128,12 +120,20 @@ function Details() {
                       <span class="brandScholarshipDetails_sectionTitle__2t6sl sec-t">
                         Benefits:
                       </span>
-                      <ul>
-                      <div class="merge">
-                            <ChevronRightIcon />
-                        <li>INR 75,000 per year for 2 years</li>
+                      <div>
+                        <ul>
+                          {data.benefit.map((item) => {
+                            return (
+                              <>
+                                <div class="merge">
+                                  <ChevronRightIcon />
+                                  <li>{item}</li>
+                                </div>
+                              </>
+                            );
+                          })}
+                        </ul>
                       </div>
-                      </ul>
                     </article>
                     <article class="brandScholarshipDetails_sectionBox__yP4qi">
                       <span class="brandScholarshipDetails_sectionTitle__2t6sl sec-t">
@@ -141,40 +141,16 @@ function Details() {
                       </span>
                       <div>
                         <ul>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>Passport-sized photograph</li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                              Valid ID proof – Either of Aadhaar Card/Driving
-                              License/Voter Id Card/Pan Card
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                              Income Proof – Income certificate/BPL
-                              certificate/Food security certificate/Any other
-                              certificate of income issued by competent
-                              government authority.
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                              Disability certificate, in case of any physical
-                              disability
-                            </li>
-                          </div>
-                          <div class="merge">
-                            <ChevronRightIcon />
-                            <li>
-                              Name &amp; Registration no. of
-                              NGO/Rotary/Association/ Not for profit
-                            </li>
-                          </div>
+                          {data.document.map((item) => {
+                            return (
+                              <>
+                                <div class="merge">
+                                  <ChevronRightIcon />
+                                  <li>{item}</li>
+                                </div>
+                              </>
+                            );
+                          })}
                         </ul>
                       </div>
                     </article>
@@ -187,10 +163,14 @@ function Details() {
                       </div>
                     </article>
                     <article class="centerItem ">
-                      <a class="button2 get-a-demo m-2" href="https://ffe.org/scholarships/">Apply Now</a>
+                      <a href={data.link}>
+                        <button class="button2 get-a-demo m-2">
+                          Apply Now
+                        </button>
+                      </a>
                       <a
                         class="button2 get-a-demo m-2"
-                        href="/scholarship-result/keep-india-smiling-foundational-grant-for-individuals-helping-others-2020-21"
+                        href={data.link}
                         target="_blank"
                       >
                         Check Result
@@ -206,7 +186,23 @@ function Details() {
         <section class=" featuredScholarshipsDefault_featuredScholarshipsDefault__25PDG">
           <h4>Featured Scholarships</h4>
           <div class="cardd brandScholarshipDetails_content__1uj_y">
-            <h6>here scholarships card come</h6>
+            {/* //scholarship card  */}
+            <div className="op">
+              {scholar.map((ele) => {
+                return (
+                  <Card
+                    name={ele.data().name}
+                    eligiblity={ele.data().eligiblity}
+                    benefit={ele.data().benefit}
+                    deadline={ele.data().closeingDate}
+                    viewlink={ele.id}
+                  />
+                );
+              })}
+            </div>
+            <Link className="ioo" to="/ViewAllScholarships">
+              see more..
+            </Link>
           </div>
         </section>
       </div>

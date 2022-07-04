@@ -6,7 +6,7 @@ import url from "../images/scholaship.png";
 import Card from "../Card/card";
 import Faq from "./faq/faq";
 import Footer from "../footer/footer";
-import ServiceFaqM from "../ServiceFaqM";
+import ServiceFaqM from "../Faq/ServiceFaqM";
 import { Link } from "react-router-dom";
 
 import { db } from "../DB/firebase";
@@ -103,13 +103,15 @@ function Home() {
               <p class="lead my-4 ">
                 Find your best scholarship and take advantage of it.
               </p>
-              <button
-                class=" button2"
-                data-bs-toggle="modal"
-                data-bs-target="#Enroll"
-              >
-                All scholarships
-              </button>
+              <Link to="/ViewAllScholarships">
+                <button
+                  class=" button2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#Enroll"
+                >
+                  All scholarships
+                </button>
+              </Link>
             </div>
 
             <a href="https://svgshare.com/s/gH0" className="right">
@@ -206,6 +208,7 @@ function Home() {
                 eligiblity={ele.data().eligiblity}
                 benefit={ele.data().benefit}
                 deadline={ele.data().closeingDate}
+                viewlink={ele.id}
               />
             );
           })}

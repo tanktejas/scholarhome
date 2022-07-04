@@ -12,7 +12,7 @@ import Details from "./Components/Details/Details";
 import AllCard from "./Components/Scholarship detail/schodetail";
 
 import Contact from "./Components/Contact/Contact";
-import Dataform from "./Components/dataform/Dataform";
+import Dataform from "./Components/dataform/dataform";
 function App() {
   return (
     <>

@@ -3,7 +3,7 @@
 .bgform {
     min-height: 72vh;
     width: 100%;
-    /* background-image: url(images/member.jpeg); */
+   
     background-position: center;
     background-size: cover;
     display: flex;

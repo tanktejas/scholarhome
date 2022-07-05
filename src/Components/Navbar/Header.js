@@ -119,19 +119,19 @@ function Header() {
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Compititive Exam based scolarship
+                          Compititive Exam <br/> based scolarship
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Foreign Study based Scholarships
+                          Foreign Study <br/> based Scholarships
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Indian Research Scholarship
+                          Indian Research <br/> Scholarship
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Foreign Research Scolarship
+                          Foreign Research <br/> Scolarship
                         </a>
                       </div>
 
@@ -145,7 +145,7 @@ function Header() {
                       </a>
                     </li>
 
-                    <li className="nav-item dropdown">
+                    <li className="nav-item ">
                       <Link
                         style={{ textDecoration: "none" }}
                         to="/About-Scholar"

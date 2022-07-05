@@ -13,6 +13,11 @@ import AllCard from "./Components/Scholarship detail/schodetail";
 
 import Contact from "./Components/Contact/Contact";
 import Dataform from "./Components/dataform/dataform";
+import StudyAtG from "./Components/study/StudyAtR.js";
+import StudyAtR from "./Components/study/StudyAtR.js";
+import StudyAtUK from "./Components/study/StudyAtUK";
+import StudyAtCa from "./Components/study/StudyAtCa";
+import StudyAtU from "./Components/study/StudyAtU.js";
 function App() {
   return (
     <>
@@ -38,6 +43,12 @@ function App() {
             element={<AllCard />}
           ></Route>
           <Route exact path="/contact" element={<Contact />}></Route>
+
+          <Route exact path="/study-at-rusia" element={<StudyAtR/>}></Route>
+          <Route exact path="/study-at-ukrain" element={<StudyAtUK/>}></Route>
+          <Route exact path="/study-at-germany" element={<StudyAtG/>}></Route>
+          <Route exact path="/study-at-canada" element={<StudyAtCa/>}></Route>
+          <Route exact path="/study-at-us" element={<StudyAtU/>}></Route>
 
         </Routes>
       </BrowserRouter>

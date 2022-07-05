@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./footer.css";
-
+import { Link } from "react-router-dom";
 function Footer() {
   const [ql, setql] = useState({ "max-height": "0px" });
   const [ns, setns] = useState({ "max-height": "0px" });
@@ -87,32 +87,43 @@ function Footer() {
                 Quick Links
               </h5>
               <ul style={width <= 987 ? ql : {}}>
+              <Link  to="/">
                 <li>
                   <a href="aboutus.shtml" className="lear-more-l">
                     Home
                   </a>
                 </li>
+                </Link>
                 <li>
-                  <a href="testimonials.shtml" className="lear-more-l">
-                    Testimonials
+                  <a href="#" className="lear-more-l">
+                    Career
                   </a>
                 </li>
+                <Link  to="/login">
                 <li className="hiring-link blink-menu">
                   <a href="career.shtml" className="lear-more-l blink-active">
-                    Admin Login
+                    Admin Login 
                   </a>{" "}
-                  <span className="hiring">We Are Hiring</span>
+                  
                 </li>
+                
+                </Link>
+                <br></br>
+                <Link  to="/About-Scholar">
                 <li>
                   <a href="#" className="lear-more-l">
                     About Us
                   </a>
                 </li>
+                </Link>
+                <br></br>
+                <Link  to="/contact">
                 <li>
                   <a href="faqs.shtml" className="lear-more-l">
-                    Service
+                    Contact Us
                   </a>
                 </li>
+                </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -167,31 +178,41 @@ function Footer() {
                 international Scholarships
               </h5>
               <ul style={width <= 987 ? is : {}}>
+              <Link  to="/study-at-germany">
                 <li>
                   <a href="#" className="lear-more-l">
-                    Study at Jermany
+                    Study at germany
                   </a>
                 </li>
+                </Link>
+                <Link  to="/study-at-us">
                 <li>
                   <a href="#" className="lear-more-l">
-                    Study at Us
+                    Study at United State
                   </a>
                 </li>
+                </Link>
+                <Link  to="/study-at-ukrain">
                 <li>
                   <a href="#" className="lear-more-l">
                     Study at Ukraine
                   </a>
                 </li>
+                </Link>
+                <Link  to="/study-at-canada">
                 <li>
                   <a href="#" className="lear-more-l">
                     Study at Canada
                   </a>
                 </li>
+                </Link>
+                <Link  to="/study-at-rusia">
                 <li>
                   <a href="#" className="lear-more-l">
                     Study at Rusia
                   </a>
                 </li>
+                </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -252,27 +273,27 @@ function Footer() {
               </h5>
               <ul style={width <= 987 ? ex : {}}>
                 <li>
-                  <a href="#" className="lear-more-l">
+                  <a href="https://www.nda.nic.in/" className="lear-more-l">
                     NDA
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="lear-more-l">
+                  <a href="https://ssb.gov.in/?AspxAutoDetectCookieSupport=1" className="lear-more-l">
                     SSB
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="lear-more-l">
+                  <a href="https://gate.iitkgp.ac.in/index.html" className="lear-more-l">
                     GATE
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="lear-more-l">
+                  <a href="http://www.kvpy.iisc.ernet.in/main/index.htm" className="lear-more-l">
                     KVPY
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="lear-more-l">
+                  <a href="https://jeemain.nta.nic.in/" className="lear-more-l">
                     JEE
                   </a>
                 </li>

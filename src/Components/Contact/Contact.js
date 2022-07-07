@@ -7,7 +7,7 @@ const emailIconSVG = () => (
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
-    fill="dodgerBlue"
+    fill="dodgerBlue" 
     class="bi bi-envelope-fill"
     viewBox="0 0 16 16"
   >

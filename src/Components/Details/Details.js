@@ -7,7 +7,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PublicIcon from "@mui/icons-material/Public";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import Footer from "../footer/footer";
+import Footer from "../footer/footer1";
 import Card from "../Card/card";
 
 import {

@@ -12,12 +12,9 @@ import Details from "./Components/Details/Details";
 import AllCard from "./Components/Scholarship detail/schodetail";
 
 import Contact from "./Components/Contact/Contact";
-<<<<<<< HEAD
 import Dataform from "./Components/dataform/dataform";
-=======
 import Comment from "./Components/comment/co";
 
->>>>>>> 33c48123718917df19b1a07d6dea7ac83eac3d5e
 function App() {
   return (
     <>
@@ -43,11 +40,8 @@ function App() {
             element={<AllCard />}
           ></Route>
           <Route exact path="/contact" element={<Contact />}></Route>
-<<<<<<< HEAD
 
-=======
           <Route exact path="/QnA" element={<Comment />}></Route>
->>>>>>> 33c48123718917df19b1a07d6dea7ac83eac3d5e
         </Routes>
       </BrowserRouter>
     </>  

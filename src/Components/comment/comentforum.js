@@ -21,7 +21,7 @@ function Coforum({
     if (type == undefined) {
       handleSubmit(name, txt, 0);
     } else if (type == "replying") {
-      handleSubmit("tejas", txt, activecomid);
+      handleSubmit(name, txt, activecomid);
       if (activecomid != 0) setactivecom(0);
     } else {
       editcomment(activecomid, txt);

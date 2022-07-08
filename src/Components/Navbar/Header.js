@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { logcont } from "../logincontext/authcontext";
+import { logcontstu } from "../../Loginsignincontext/context";
 
 import "../main.css";
-
 import "./plugins.min.css";
 
 function Header() {
@@ -12,7 +12,11 @@ function Header() {
   const [scho, setscho] = useState({ display: "none" });
   const [cont, setcont] = useState({ display: "none" });
   const { user, logout } = useContext(logcont);
+  const { student, slogout } = useContext(logcontstu);
   const [curruser, setuser] = useState(user == "no" ? null : user);
+  const [currstudent, setcurrstudent] = useState(
+    student == "no" ? null : student
+  );
 
   // for admin logout
   const Logout = () => {
@@ -26,7 +30,26 @@ function Header() {
       });
   };
 
-  console.log(user);
+  //student logout
+  const SLogout = () => {
+    slogout()
+      .then((ok) => {
+        setcurrstudent(null);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  if (student == undefined) {
+    return (
+      <>
+        <h1>Loading...</h1>
+      </>
+    );
+  }
+
+  console.log(student);
 
   return (
     <>
@@ -134,9 +157,6 @@ function Header() {
                           Foreign Research Scolarship
                         </a>
                       </div>
-
-                      {/* </div>
-                    </div> */}
                     </li>
 
                     <li className="nav-item ">
@@ -161,10 +181,17 @@ function Header() {
                         Contact
                       </NavLink>
                     </li>
-                    {!curruser && (
+                    {!curruser && !currstudent && (
                       <li className="nav-item">
                         <NavLink className="nav-link" to="/login">
                           Admin Login
+                        </NavLink>
+                      </li>
+                    )}
+                    {!currstudent && !curruser && (
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="/slogin">
+                          Student Login
                         </NavLink>
                       </li>
                     )}
@@ -180,6 +207,17 @@ function Header() {
                         <button
                           onClick={() => {
                             Logout();
+                          }}
+                        >
+                          logout
+                        </button>
+                      </li>
+                    )}
+                    {currstudent && (
+                      <li className="nav-item">
+                        <button
+                          onClick={() => {
+                            SLogout();
                           }}
                         >
                           logout

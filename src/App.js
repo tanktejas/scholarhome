@@ -12,8 +12,20 @@ import Details from "./Components/Details/Details";
 import AllCard from "./Components/Scholarship detail/schodetail";
 
 import Contact from "./Components/Contact/Contact";
-import Dataform from "./Components/dataform/dataform";
 import Comment from "./Components/comment/co";
+
+import Studentlog from "./loginsignup/login";
+import StudentSign from "./loginsignup/signin";
+import StudentForgot from "./loginsignup/forgot1";
+
+import Dataform from "./Components/dataform/dataform";
+
+//study
+import StudyAtG from "./Components/study/StudyAtR.js";
+import StudyAtR from "./Components/study/StudyAtR.js";
+import StudyAtUK from "./Components/study/StudyAtUK";
+import StudyAtCa from "./Components/study/StudyAtCa";
+import StudyAtU from "./Components/study/StudyAtU.js";
 
 function App() {
   return (
@@ -31,20 +43,26 @@ function App() {
           <Route exact path="/Team" element={<Team />}></Route>
           <Route exact path="/scholarship-info" element={<Details />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/slogin" element={<Studentlog />}></Route>
+          <Route exact path="/ssignin" element={<StudentSign />}></Route>
+          <Route exact path="/sforgot" element={<StudentForgot />}></Route>
+          <Route exact path="/form" element={<Dataform />}></Route>
 
-          <Route exact path="/form" element={<Dataform/>}></Route>
-
+          <Route exact path="/study-at-rusia" element={<StudyAtR />}></Route>
+          <Route exact path="/study-at-ukrain" element={<StudyAtUK />}></Route>
+          <Route exact path="/study-at-germany" element={<StudyAtG />}></Route>
+          <Route exact path="/study-at-canada" element={<StudyAtCa />}></Route>
+          <Route exact path="/study-at-us" element={<StudyAtU />}></Route>
           <Route
             exact
             path="/scholarship/:schoid"
             element={<AllCard />}
           ></Route>
           <Route exact path="/contact" element={<Contact />}></Route>
-
           <Route exact path="/QnA" element={<Comment />}></Route>
         </Routes>
       </BrowserRouter>
-    </>  
+    </>
   );
 }
 

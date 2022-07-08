@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 function Footer() {
@@ -8,6 +9,11 @@ function Footer() {
   const [rs, setrs] = useState({ "max-height": "0px" });
   const [ex, setex] = useState({ "max-height": "0px" });
   const [width, setwid] = useState(window.innerWidth);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout((element) => {}, 0);
+    // alert(props.index);
+  }, []);
 
   return (
     <>
@@ -28,12 +34,14 @@ function Footer() {
               <div class="footer-center">
                 <div>
                   <i class="fa fa-phone"></i>
-                  <p style={{ margin: "auto" }}>+91 9309090932</p>
+                  <p style={{ margin: "auto" }}>+91 6354434661</p>
                 </div>
                 <div>
                   <i class="fa fa-envelope"></i>
                   <p>
-                    <a href="mailto:support@company.com">Scholar@gmail.com</a>
+                    <a href="mailto:stuhelpofficial@gmail.com">
+                      Stuhelpofficial@gmail.com
+                    </a>
                   </p>
                 </div>
               </div>
@@ -87,32 +95,43 @@ function Footer() {
                 Quick Links
               </h5>
               <ul style={width <= 987 ? ql : {}}>
-                <li>
-                  <a href="aboutus.shtml" className="lear-more-l">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="testimonials.shtml" className="lear-more-l">
-                    Testimonials
-                  </a>
-                </li>
-                <li className="hiring-link blink-menu">
-                  <a href="career.shtml" className="lear-more-l blink-active">
-                    Admin Login
-                  </a>{" "}
-                  <span className="hiring">We Are Hiring</span>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="faqs.shtml" className="lear-more-l">
-                    Service
-                  </a>
-                </li>
+                <Link to="/">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Home
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/login">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Student Login
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/tlogin">
+                  <li className="hiring-link blink-menu">
+                    <a href="#" className="lear-more-l blink-active">
+                      Teacher Login
+                    </a>{" "}
+                    <span className="hiring">We Are Hiring</span>
+                  </li>
+                </Link>
+                <Link to="/About-Scholar">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      About Us
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/contact">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      COntact Us
+                    </a>
+                  </li>
+                </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -127,27 +146,27 @@ function Footer() {
                   }
                 }}
               >
-                National Scholarships
+                Certifited Courses
               </h5>
               <ul style={width <= 987 ? ns : {}}>
                 <li>
                   <a href="#" className="lear-more-l">
-                    State Scholarships
+                    CS/IT Core Courses
                   </a>
                 </li>
                 <li>
                   <a href="#" className="lear-more-l">
-                    Central Scholarships
+                    Web Dev. Courses
                   </a>
                 </li>
                 <li>
                   <a href="#" className="lear-more-l">
-                    Private Scholarship
+                    App Dev. Courses
                   </a>
                 </li>
                 <li>
                   <a href="#" className="lear-more-l">
-                    Compititive Exam <br /> based Scholarships
+                    communication Skills Courses
                   </a>
                 </li>
               </ul>
@@ -164,34 +183,44 @@ function Footer() {
                   }
                 }}
               >
-                international Scholarships
+                Foreign Study Helper
               </h5>
               <ul style={width <= 987 ? is : {}}>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Study at Jermany
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Study at Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Study at Ukraine
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Study at Canada
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Study at Rusia
-                  </a>
-                </li>
+                <Link to="/study-at-germany">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Study at germany
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/study-at-us">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Study at United State
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/study-at-ukrain">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Study at Ukraine
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/study-at-canada">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Study at Canada
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/study-at-rusia">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Study at Rusia
+                    </a>
+                  </li>
+                </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -206,34 +235,47 @@ function Footer() {
                   }
                 }}
               >
-                Research Fellowships
+                Our's Compitition
               </h5>
               <ul style={width <= 987 ? rs : {}}>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    PMRF Fellowship
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    TARE Fellowship
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    JNFF Fellowship
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Google Phd Fellowship
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    ICMR Fellowship
-                  </a>
-                </li>
+                <Link to="/compihome">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Select * from brain
+                    </a>
+                  </li>
+                </Link>
+                <Link to="/study-at-canada">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Spin E Web
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/study-at-canada">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      MoneyHeist
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/study-at-canada">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Maths Pirates
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/study-at-canada">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Bug Bunny
+                    </a>
+                  </li>
+                </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -248,55 +290,58 @@ function Footer() {
                   }
                 }}
               >
-                Exams
+                Imp !!
               </h5>
               <ul style={width <= 987 ? ex : {}}>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    NDA
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    SSB
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    GATE
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    KVPY
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    JEE
-                  </a>
-                </li>
+                <Link to="/ViewAllScholarships">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Courses
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/compihome">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Compitition
+                    </a>
+                  </li>
+                </Link>
+                <br />
+
+                <Link to="/Team">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Our Team
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/career">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Career
+                    </a>
+                  </li>
+                </Link>
+                <br />
+                <Link to="/result">
+                  <li>
+                    <a href="#" className="lear-more-l">
+                      Results
+                    </a>
+                  </li>
+                </Link>
               </ul>
             </div>
           </div>
           <div className="col-md-12 col-sm-12 col-xs-12 copy-right text-center">
             <p>
-              <a
-                href="https://www.dmca.com/Protection/Status.aspx?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18&amp;refurl=#9"
-                title="DMCA.com Protection Status"
-                className="dmca-badge"
-              >
-                <img
-                  src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-03.png?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18"
-                  alt="DMCA.com Protection Status"
-                  width="100"
-                  height="20"
-                />
-              </a>
               <span>
                 © 2022
                 <a href="#" target="_new">
-                  Scholar
+                  STUHELP
                 </a>
                 All rights reserved.
               </span>

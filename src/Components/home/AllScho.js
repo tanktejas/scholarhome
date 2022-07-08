@@ -5,7 +5,7 @@ import url from "../images/scholaship.png";
 // importing all files
 import Card from "../Card/card";
 import Faq from "./faq/faq";
-import Footer from "../footer/footer";
+import Footer from "../footer/footer1";
 
 //firebase
 import { Link } from "react-router-dom";

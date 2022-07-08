@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Footer from "../footer/footer";
+import Footer from "../footer/footer1";
 import "./Contact.css";
 
 const emailIconSVG = () => (

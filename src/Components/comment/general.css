@@ -274,7 +274,7 @@
  justify-content: flex-start;
  flex-wrap: wrap;
 }
- 
+
 .bbb{
   margin-top: 0px !important;
 }
@@ -283,6 +283,8 @@
   /* width: 23px; */
   font-size: 15px !important;
   margin-left: 18px;
+  color: white !important;
+  background-color: rgb(39, 39, 244) !important;
 }
 
 @media (max-width:700px) {
@@ -299,6 +301,9 @@
   }
   .btnforsub button{
     font-size: 11px !important;
+  }
+  .wel,.allc{
+    font-size: 23px !important;
   }
 }
 

@@ -19,62 +19,60 @@ function Footer() {
     <>
       <footer className="footer nav-folderized">
         <div className="container ">
-          <div className=" c a address-f footer-address-main">
-            <div className=" b footer-adress">
-              <i class="fa fa-map-marker"></i>
+        <div className=" c a address-f footer-address-main">
+        <div className=" b footer-adress">
+          <i class="fa fa-map-marker"></i>
 
-              {/* <h5>India</h5> */}
+          {/* <h5>India</h5> */}
+          <p>
+            01S09 A.M.Naik house of schol, V.V.Nagar <br />
+            Anand, Gujarat 380010
+          </p>
+        </div>
+        <div className="b footer-awards">
+          <h5>Contact Us</h5>
+          <div class="footer-center">
+            <div>
+              <i class="fa fa-phone"></i>
+              <p style={{ margin: "auto" }}>+91 9309090932</p>
+            </div>
+            <div>
+              <i class="fa fa-envelope"></i>
               <p>
-                01S09 A.M.Naik house of schol, V.V.Nagar <br />
-                Anand, Gujarat 380010
+                <a href="mailto:support@company.com">Scholar@gmail.com</a>
               </p>
-            </div>
-            <div className="b footer-awards">
-              <h5>Contact Us</h5>
-              <div class="footer-center">
-                <div>
-                  <i class="fa fa-phone"></i>
-                  <p style={{ margin: "auto" }}>+91 6354434661</p>
-                </div>
-                <div>
-                  <i class="fa fa-envelope"></i>
-                  <p>
-                    <a href="mailto:stuhelpofficial@gmail.com">
-                      Stuhelpofficial@gmail.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="b footer-social home-social">
-              <h5>Follow us on</h5>
-
-              <ul class="footer-icons">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-github"></i>
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
+
+        <div className="b footer-social home-social">
+          <h5>Follow us on</h5>
+
+          <ul class="footer-icons">
+            <li>
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
         <div className="col-md-12 col-sm-12">
           <hr />
         </div>
@@ -110,14 +108,16 @@ function Footer() {
                     </a>
                   </li>
                 </Link>
+                <br/>
                 <Link to="/tlogin">
                   <li className="hiring-link blink-menu">
                     <a href="#" className="lear-more-l blink-active">
-                      Teacher Login
+                      Admin Login
                     </a>{" "}
                     <span className="hiring">We Are Hiring</span>
                   </li>
                 </Link>
+                <br/>
                 <Link to="/About-Scholar">
                   <li>
                     <a href="#" className="lear-more-l">
@@ -125,53 +125,54 @@ function Footer() {
                     </a>
                   </li>
                 </Link>
+                <br/>
                 <Link to="/contact">
                   <li>
                     <a href="#" className="lear-more-l">
-                      COntact Us
+                      Contact Us
                     </a>
                   </li>
                 </Link>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
-              <h5
-                onClick={() => {
-                  if (width <= 987) {
-                    if (ns["max-height"] == "0px") {
-                      setns({ "max-height": "100%" });
-                    } else {
-                      setns({ "max-height": "0px" });
-                    }
+            <h5
+              onClick={() => {
+                if (width <= 987) {
+                  if (ns["max-height"] == "0px") {
+                    setns({ "max-height": "100%" });
+                  } else {
+                    setns({ "max-height": "0px" });
                   }
-                }}
-              >
-                Certifited Courses
-              </h5>
-              <ul style={width <= 987 ? ns : {}}>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    CS/IT Core Courses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    Web Dev. Courses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    App Dev. Courses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="lear-more-l">
-                    communication Skills Courses
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-link ftr__list nav">
+                }
+              }}
+            >
+              National Scholarships
+            </h5>
+            <ul style={width <= 987 ? ns : {}}>
+              <li>
+                <a href="#" className="lear-more-l">
+                  State Scholarships
+                </a>
+              </li>
+              <li>
+                <a href="#" className="lear-more-l">
+                  Central Scholarships
+                </a>
+              </li>
+              <li>
+                <a href="#" className="lear-more-l">
+                  Private Scholarship
+                </a>
+              </li>
+              <li>
+                <a href="#" className="lear-more-l">
+                  Compititive Exam <br /> based Scholarships
+                </a>
+              </li>
+            </ul>
+          </div>
+   <div className="footer-link ftr__list nav">
               <h5
                 onClick={() => {
                   if (width <= 987) {
@@ -183,7 +184,7 @@ function Footer() {
                   }
                 }}
               >
-                Foreign Study Helper
+              international Scholarships
               </h5>
               <ul style={width <= 987 ? is : {}}>
                 <Link to="/study-at-germany">
@@ -223,6 +224,7 @@ function Footer() {
                 </Link>
               </ul>
             </div>
+           
             <div className="footer-link ftr__list nav">
               <h5
                 onClick={() => {
@@ -235,47 +237,34 @@ function Footer() {
                   }
                 }}
               >
-                Our's Compitition
+                Research Fellowships
               </h5>
               <ul style={width <= 987 ? rs : {}}>
-                <Link to="/compihome">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Select * from brain
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/study-at-canada">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Spin E Web
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/study-at-canada">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      MoneyHeist
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/study-at-canada">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Maths Pirates
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/study-at-canada">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Bug Bunny
-                    </a>
-                  </li>
-                </Link>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    PMRF Fellowship
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    TARE Fellowship
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    JNFF Fellowship
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    Google Phd Fellowship
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    ICMR Fellowship
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -290,69 +279,66 @@ function Footer() {
                   }
                 }}
               >
-                Imp !!
+                Exams
               </h5>
               <ul style={width <= 987 ? ex : {}}>
-                <Link to="/ViewAllScholarships">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Courses
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/compihome">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Compitition
-                    </a>
-                  </li>
-                </Link>
-                <br />
-
-                <Link to="/Team">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Our Team
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/career">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Career
-                    </a>
-                  </li>
-                </Link>
-                <br />
-                <Link to="/result">
-                  <li>
-                    <a href="#" className="lear-more-l">
-                      Results
-                    </a>
-                  </li>
-                </Link>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    NDA
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    SSB
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    GATE
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    KVPY
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="lear-more-l">
+                    JEE
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div className="col-md-12 col-sm-12 col-xs-12 copy-right text-center">
-            <p>
-              <span>
-                © 2022
-                <a href="#" target="_new">
-                  STUHELP
-                </a>
-                All rights reserved.
-              </span>
-            </p>
-          </div>
+          <p>
+            <a
+              href="https://www.dmca.com/Protection/Status.aspx?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18&amp;refurl=#9"
+              title="DMCA.com Protection Status"
+              className="dmca-badge"
+            >
+              <img
+                src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-03.png?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18"
+                alt="DMCA.com Protection Status"
+                width="100"
+                height="20"
+              />
+            </a>
+            <span>
+              © 2022
+              <a href="#" target="_new">
+                Scholar
+              </a>
+              All rights reserved.
+            </span>
+          </p>
         </div>
-      </footer>
+      </div>
+    </footer>
 
-      <script src="../js/start.js"></script>
-      <script src="../js/mmenu-light.js"></script>
-    </>
+    <script src="../js/start.js"></script>
+    <script src="../js/mmenu-light.js"></script>
+   </>
   );
 }
 

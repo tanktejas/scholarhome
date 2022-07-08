@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Coforum from "./comentforum";
 
-function Singleco({ data, replies, currstudent, deletecomment }) {
+function Singleco({
+  data,
+  replies,
+  currstudent,
+  deletecomment,
+  activecomid,
+  setactivecom,
+  handleSubmit,
+  type,
+  settype,
+  editcomment,
+  student,
+}) {
   return (
     <>
       <div className="comment">
@@ -10,16 +23,34 @@ function Singleco({ data, replies, currstudent, deletecomment }) {
         <div className="comment-right-part">
           <div className="comment-content">
             <div className="comment-author">{data.username}</div>
-            <div>{data.createdat}</div>
+            <div className="comment-author" style={{ color: "black" }}>
+              {data.createdat}
+            </div>
           </div>
           <div className="comment-text">{data.body}</div>
           <div className="comment-actions">
             {currstudent != null && data.parentid == 0 && (
-              <div className="comment-action">Reply</div>
+              <div
+                className="comment-action"
+                onClick={() => {
+                  setactivecom(data.id);
+                  settype("replying");
+                }}
+              >
+                Reply
+              </div>
             )}
             {data.email == currstudent?.email && (
               <>
-                <div className="comment-action">Edit</div>
+                <div
+                  className="comment-action"
+                  onClick={() => {
+                    settype("editing");
+                    setactivecom(data.id);
+                  }}
+                >
+                  Edit
+                </div>
                 <div
                   className="comment-action"
                   onClick={() => {
@@ -31,12 +62,34 @@ function Singleco({ data, replies, currstudent, deletecomment }) {
               </>
             )}
           </div>
+          {activecomid == data.id && (
+            <Coforum
+              handleSubmit={handleSubmit}
+              activecomid={activecomid}
+              setactivecom={setactivecom}
+              type={type}
+              settype={settype}
+              editcomment={editcomment}
+              edittext={data.body}
+              student={student}
+            />
+          )}
           {replies.length > 0 && (
             <div className="replies">
               {replies.map((item) => {
                 return (
                   <>
-                    <Singleco data={item} replies={[]} />
+                    <Singleco
+                      data={item}
+                      replies={[]}
+                      currstudent={currstudent}
+                      activecomid={activecomid}
+                      setactivecom={setactivecom}
+                      deletecomment={deletecomment}
+                      editcomment={editcomment}
+                      type={type}
+                      settype={settype}
+                    />
                   </>
                 );
               })}

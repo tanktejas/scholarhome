@@ -62,7 +62,7 @@ function App() {
           <Route exact path="/QnA" element={<Comment />}></Route>
         </Routes>
       </BrowserRouter>
-    </>  
+    </>
   );
 }
 

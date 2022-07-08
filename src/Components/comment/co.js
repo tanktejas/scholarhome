@@ -32,6 +32,8 @@ function Comment() {
   const { student } = useContext(logcontstu);
   const [currstudent, setstudent] = useState(student == "no" ? null : student);
   const [perdata, setperdata] = useState(undefined);
+  const [activecomid, setactivecom] = useState(0);
+  const [type, settype] = useState("");
 
   const addComment = async (uname, text, parentid = 0) => {
     const docData = {
@@ -56,7 +58,28 @@ function Comment() {
           let data = qS.docs;
           setperdata(data);
         });
-        console.log(comment);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const editcomment = (cid, txt) => {
+    let finddelid = "",
+      finddelobj;
+
+    perdata.map((item) => {
+      if (item.data().id == cid) {
+        finddelid = item.id;
+        finddelobj = item.data();
+      }
+    });
+
+    finddelobj.body = txt;
+
+    setDoc(doc(db, "FAQ", finddelid), finddelobj)
+      .then((result) => {
+        setactivecom(0);
       })
       .catch((err) => {
         alert(err);
@@ -77,6 +100,10 @@ function Comment() {
   };
 
   useEffect(() => {
+    if (currstudent == undefined) {
+      alert("First you need to do login after you can ask question.");
+      window.location.replace("/slogin");
+    }
     const q = query(collection(db, "FAQ"));
     onSnapshot(q, (qS) => {
       let data = qS.docs;
@@ -115,10 +142,14 @@ function Comment() {
 
   return (
     <>
+      <h2 className="wel">Welcome to QnA</h2>
       <div className="comments">
-        <h3 className="comment-title">Comments</h3>
-        <div className="coment-form-title">Write comment</div>
-        <Coforum submitLabel="Write" handleSubmit={addComment} />
+        <Coforum
+          submitLabel="Write"
+          handleSubmit={addComment}
+          student={student}
+        />
+        <h2 className="allc">All Comments</h2>
         <div className="comment-container">
           {rootcom.map((item) => {
             return (
@@ -128,11 +159,24 @@ function Comment() {
                   replies={getreply(item.id)}
                   currstudent={currstudent}
                   deletecomment={deletecomment}
+                  activecomid={activecomid}
+                  setactivecom={setactivecom}
+                  handleSubmit={addComment}
+                  type={type}
+                  settype={settype}
+                  editcomment={editcomment}
+                  student={student}
                 />
               </>
             );
           })}
         </div>
+      </div>
+      <div>
+        <p className="note">
+          *you can reply to upper level comment and edit and delete your
+          comment.
+        </p>
       </div>
     </>
   );

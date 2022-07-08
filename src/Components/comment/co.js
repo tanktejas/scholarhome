@@ -100,10 +100,6 @@ function Comment() {
   };
 
   useEffect(() => {
-    if (currstudent == undefined) {
-      alert("First you need to do login after you can ask question.");
-      window.location.replace("/slogin");
-    }
     const q = query(collection(db, "FAQ"));
     onSnapshot(q, (qS) => {
       let data = qS.docs;
@@ -138,6 +134,10 @@ function Comment() {
         <h1>Loading...</h1>
       </>
     );
+  }
+  if (currstudent == undefined) {
+    alert("First you need to do login after you can ask question.");
+    window.location.replace("/slogin");
   }
 
   return (

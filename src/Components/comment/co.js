@@ -142,7 +142,12 @@ function Comment() {
 
   return (
     <>
-      <h2 className="wel">Welcome to QnA</h2>
+      <div class="" >
+      <div class="container" style={{ backgroundImage: 'url("pattern-bg.jpg")' }}>
+      <div class="row">
+      <div class="col-md-12">
+      <h2 className="wel section-title">Welcome to Scholars Discussion Form </h2>
+      <h4 class="redd">Dear Student Here You can Ask Your General Query Regarding Scholarships, Fellowships and more. Our Doubt Support Team will review and give you proper Answer. As You know there are lots of student using our platform so student who know the solution please help the other student. You can put your suggestion / Instruction here.</h4></div></div></div>
       <div className="comments">
         <Coforum
           submitLabel="Write"
@@ -178,7 +183,9 @@ function Comment() {
           comment.
         </p>
       </div>
+      </div>
     </>
+
   );
 }
 

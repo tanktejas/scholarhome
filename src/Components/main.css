@@ -608,7 +608,7 @@ mark {
 	.navbar-collapse {
 		position: fixed;
 		background-color: #fff;
-		width: calc(100% - 20px);
+		width: calc(100% - 33px);
 		height: auto;
 		max-height: calc(100% - 130px);
 		z-index: 9999;

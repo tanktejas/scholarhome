@@ -31,7 +31,7 @@ function Singleco({
           <div className="comment-actions">
             {currstudent != null && data.parentid == 0 && (
               <div
-                className="comment-action"
+                className="comment-action button2"
                 onClick={() => {
                   setactivecom(data.id);
                   settype("replying");
@@ -43,7 +43,7 @@ function Singleco({
             {data.email == currstudent?.email && (
               <>
                 <div
-                  className="comment-action"
+                  className="comment-action button2"
                   onClick={() => {
                     settype("editing");
                     setactivecom(data.id);
@@ -52,7 +52,7 @@ function Singleco({
                   Edit
                 </div>
                 <div
-                  className="comment-action"
+                  className="comment-action button2"
                   onClick={() => {
                     deletecomment(data.id);
                   }}

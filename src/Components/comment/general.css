@@ -120,8 +120,8 @@
     font-size: 13px;
     color: rgb(24, 109, 247);
     cursor: pointer;
-    margin-top: 8px;
-    text-decoration: underline;
+    /* margin-top: 8px; */
+    /* text-decoration: underline; */
 
   }
   
@@ -129,9 +129,9 @@
     margin-right: 8px;
   }
   
-  .comment-action:hover {
+  /* .comment-action:hover {
     text-decoration: underline;
-  }
+  } */
   
   .replies {
     margin-top: 20px;
@@ -280,11 +280,12 @@
 }
 
 .btnforsub button{
-  /* width: 23px; */
+  width: 82px; 
   font-size: 15px !important;
-  margin-left: 18px;
+
   color: white !important;
-  background-color: rgb(39, 39, 244) !important;
+  /* background-color: rgb(39, 39, 244) !important; */
+  margin-left: 18px;
 }
 
 @media (max-width:700px) {

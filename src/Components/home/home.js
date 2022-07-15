@@ -209,6 +209,7 @@ function Home() {
                 benefit={ele.data().benefit}
                 deadline={ele.data().closeingDate}
                 viewlink={ele.id}
+                logo={ele.data().logo}
               />
             );
           })}

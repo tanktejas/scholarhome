@@ -27,8 +27,9 @@ function Signin() {
     seterr("");
     signin(email, pass)
       .then((res) => {
-        alert("you are succesfully signin");
-        navigate("/");
+        alert(user);
+        // alert("you are succesfully signin");
+        // navigate("/");
       })
       .catch((err) => {
         seterr("Failed to Signin.");

@@ -28,7 +28,7 @@
     width: 329px !important;
 }
 .cardmain img{
-    height: auto;
+    
 }
 .bodypart .eligi ul{
     /* display: flex;
@@ -41,6 +41,9 @@
     bottom: 1%; */
     padding: 9px;
     width: 100%;
+}
+.object-cover {
+    object-fit: scale-down !important;
 }
 .buttforsc button{
     background-color: #1e90ff;

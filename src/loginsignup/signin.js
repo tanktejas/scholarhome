@@ -28,6 +28,7 @@ function Signin() {
     signin(email, pass)
       .then((res) => {
         alert("you are succesfully signin");
+
         navigate("/");
         window.location.reload();
       })

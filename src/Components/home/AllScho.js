@@ -257,7 +257,7 @@ function AllScho() {
                   benefit={ele.data().benefit}
                   deadline={ele.data().closeingDate}
                   viewlink={ele.id}
-                  link={ele.link}
+                  logo={ele.data().logo}
                 />
               );
             })}

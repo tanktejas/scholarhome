@@ -26,6 +26,7 @@ import StudyAtR from "./Components/study/StudyAtR.js";
 import StudyAtUK from "./Components/study/StudyAtUK";
 import StudyAtCa from "./Components/study/StudyAtCa";
 import StudyAtU from "./Components/study/StudyAtU.js";
+// import Dashboard from "./Dashboard/main";
 
 function App() {
   return (

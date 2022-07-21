@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../footer/footer1";
 import "./dataform.css";
+import { db } from "../DB/firebase";
+
+import { collection, getFirestore, addDoc } from "firebase/firestore";
+import { orderBy, onSnapshot, doc } from "firebase/firestore";
+
 function Dataform() {
   const [email, setEmail] = useState("");
   const [orgname, setOrgname] = useState("");
@@ -15,6 +20,43 @@ function Dataform() {
   const [proce, setProce] = useState("");
   const [comment, setComment] = useState("");
   const [date, setDate] = useState("");
+  const [document, setdoc] = useState("");
+  const [cat, setcat] = useState("All");
+  const [link, setlink] = useState("");
+
+  const submit = () => {
+    let benefit = bene.split(".");
+    let docc = document.split(".");
+    let eligib = eli.split(".");
+    let process1 = proce.split(".");
+
+    const scholarship = {
+      name: schoname,
+      about: about,
+      benefit: benefit,
+      category: cat.toLowerCase(),
+      closeingDate: date.toString(),
+      document: docc,
+      eligiblity: eligib,
+      isHandi: false,
+      isMilitry: false,
+      link: link,
+      logo: "logo",
+      process: process1,
+      region: "India",
+      state: "All",
+      tag: orgname,
+    };
+
+    addDoc(collection(db, "Scholarships"), scholarship)
+      .then((result) => {
+        alert("scholarship added");
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <div>
@@ -25,7 +67,6 @@ function Dataform() {
               <h2>Short &amp; Sweet</h2>
             </div>
             <div className="subb">
-              {" "}
               <p>
                 After Receiving your data form response we will shortly
                 connected through Contact provided by you so make sure you
@@ -48,7 +89,7 @@ function Dataform() {
           <h3 class="form-below">
             Fields marked with an <span class="redd">*</span> are required
           </h3>
-          <form action="./mem.php" method="post">
+          <form>
             <div class="box">
               <label for="Oname" class="form-below labell">
                 Organization Name <span class="redd">*</span>
@@ -61,6 +102,22 @@ function Dataform() {
                 name="Oname"
                 class="form-input"
                 placeholder="Enter Your Organization Name"
+                required
+              />
+            </div>
+
+            <div class="box">
+              <label for="Oname" class="form-below labell">
+                Link of Scholarship <span class="redd">*</span>
+              </label>
+              <br />
+              <input
+                type="text"
+                value={link}
+                onChange={(e) => setlink(e.target.value)}
+                name="Oname"
+                class="form-input"
+                placeholder="Enter Your Organization Website Link."
                 required
               />
             </div>
@@ -217,6 +274,22 @@ function Dataform() {
             </div>
 
             <div class="box">
+              <label for="proc" class="form-below labell">
+                Document for Scholarship <span class="redd">*</span>
+              </label>
+              <br />
+              <input
+                type="text"
+                value={document}
+                onChange={(e) => setdoc(e.target.value)}
+                name="proc"
+                class="form-input"
+                placeholder="List Out All document."
+                required
+              />
+            </div>
+
+            <div class="box">
               <label for="joiningDate" class="form-below labell">
                 Deadline Of Your Scholarship <span class="redd">*</span>
               </label>
@@ -224,7 +297,9 @@ function Dataform() {
               <input
                 type="date"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
                 name="date"
                 class="form-input"
                 required
@@ -287,13 +362,23 @@ function Dataform() {
                 scholarships ? <span class="redd">*</span>{" "}
               </label>
               <br />
-              <select name="time" id="stime" class="form-input" required>
+              <select
+                name="time"
+                id="stime"
+                class="form-input"
+                value={cat}
+                onChange={(e) => {
+                  setcat(e.target.value);
+                  alert(e.target.value);
+                }}
+                required
+              >
                 <option value="Select time">Select category</option>
-                <option value="1 hour">General</option>
-                <option value="2 hour">OBC/SC/ST</option>
-                <option value="3 hour">ALL</option>
-                <option value="3 hour">OBC</option>
-                <option value="4 hour">SC/ST</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="ALL">ALL</option>
+                <option value="ST">SC</option>
+                <option value="SC">SC</option>
               </select>
             </div>
 
@@ -315,7 +400,14 @@ function Dataform() {
             </div>
 
             <div class="box">
-              <input type="submit" value="submit" class="  button2 ml-3" />
+              <input
+                value="Submit"
+                type="Button"
+                class="  button2 ml-3"
+                onClick={() => {
+                  submit();
+                }}
+              />
             </div>
           </form>
           <h3 class="form-below">

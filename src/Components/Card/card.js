@@ -3,10 +3,11 @@ import React from "react";
 import "./card.css";
 import { Link } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+ 
 
 function Card({ name, eligiblity, benefit, deadline, viewlink, logo }) {
   const url = `/scholarship/${viewlink}`;
-
+      
   return (
     <>
       <div className="bg-white w-72 shadow-lg rounded-lg cardmain">

@@ -26,6 +26,25 @@ function Details({ data }) {
   const [scholar, setscho] = useState([]);
 
   useEffect(() => {
+    if (data.key != undefined) {
+      let key = data.key;
+      let namespace = data.namespace;
+
+      const get = `https://api.countapi.xyz/get/${namespace}/${key}`;
+
+      fetch(get)
+        .then((data) => {
+          return data.json();
+        })
+        .then((data) => {
+          let dataobj = data;
+          const url = `https://api.countapi.xyz/update/${namespace}/${key}?amount=1`;
+          fetch(url)
+            .then((udata) => udata.json())
+            .then((uudata) => {});
+        });
+    }
+
     const q = query(collection(db, "Scholarships"));
     onSnapshot(q, (qS) => {
       let data = qS.docs;
@@ -40,7 +59,7 @@ function Details({ data }) {
       </>
     );
   }
-  console.log(scholar);
+  console.log(data);
 
   return (
     <div>

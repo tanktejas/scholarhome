@@ -50,13 +50,13 @@ function Header() {
       })
       .catch((err) => {});
   };
-
+  
   //student logout
   const SLogout = () => {
     slogout()
       .then((ok) => {
         setcurrstudent(null);
-      })
+      }) 
       .catch((err) => {});
   };
 

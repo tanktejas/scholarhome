@@ -423,7 +423,6 @@ function Dataform() {
                 value={cat}
                 onChange={(e) => {
                   setcat(e.target.value);
-                  alert(e.target.value);
                 }}
                 required
               >

@@ -9,6 +9,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Footer from "../footer/footer1";
 import Card from "../Card/card";
+import RoomIcon from "@material-ui/icons/Room";
 
 import {
   collection,
@@ -116,6 +117,14 @@ function Details({ data }) {
                       <CalendarMonthIcon />
                       <p>Deadline : {data.closeingDate}</p>
                     </span>
+                    <span class="brandScholarshipDetails_calendarIcon__2-5hX">
+                      <RoomIcon />
+                      <p>
+                        Status :{" "}
+                        {data.status[0].toUpperCase() +
+                          data.status.substring(1)}
+                      </p>
+                    </span>
                     <article class="brandScholarshipDetails_sectionBox__yP4qi brandScholarshipDetails_firstElem__2pjgC">
                       <span class="brandScholarshipDetails_sectionTitle__2t6sl  sec-t">
                         Eligibility
@@ -215,6 +224,7 @@ function Details({ data }) {
                     benefit={ele.data().benefit}
                     deadline={ele.data().closeingDate}
                     viewlink={ele.id}
+                    logo={ele.data().logo}
                   />
                 );
               })}

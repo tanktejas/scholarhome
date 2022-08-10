@@ -82,6 +82,7 @@ function Dataform() {
       tag: orgname,
       namespace: namespace,
       key: key,
+      status: "active",
     };
 
     let obj = curruser.data();

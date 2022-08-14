@@ -12,7 +12,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { auth } from "./firebase";
 
 const logcontstu = createContext();
-
+        
 export { logcontstu };
 
 function LogCompo({ children }) {
@@ -54,7 +54,7 @@ function LogCompo({ children }) {
     passremail,
     slogout,
   };
-
+    
   useEffect(() => {
     setload(true);
     return auth.onAuthStateChanged((user) => {
@@ -63,9 +63,9 @@ function LogCompo({ children }) {
         setuser("no");
       }
       setload(false);
-    });
+    });    
   }, []);
-
+    
   return (
     <>
       <logcontstu.Provider value={value}>

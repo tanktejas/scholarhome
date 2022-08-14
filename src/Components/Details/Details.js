@@ -9,6 +9,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Footer from "../footer/footer1";
 import Card from "../Card/card";
+import RoomIcon from "@material-ui/icons/Room";
 
 import {
   collection,
@@ -26,6 +27,25 @@ function Details({ data }) {
   const [scholar, setscho] = useState([]);
 
   useEffect(() => {
+    if (data.key != undefined) {
+      let key = data.key;
+      let namespace = data.namespace;
+
+      const get = `https://api.countapi.xyz/get/${namespace}/${key}`;
+
+      fetch(get)
+        .then((data) => {
+          return data.json();
+        })
+        .then((data) => {
+          let dataobj = data;
+          const url = `https://api.countapi.xyz/update/${namespace}/${key}?amount=1`;
+          fetch(url)
+            .then((udata) => udata.json())
+            .then((uudata) => {});
+        });
+    }
+
     const q = query(collection(db, "Scholarships"));
     onSnapshot(q, (qS) => {
       let data = qS.docs;
@@ -40,7 +60,7 @@ function Details({ data }) {
       </>
     );
   }
-  console.log(scholar);
+  console.log(data);
 
   return (
     <div>
@@ -96,6 +116,14 @@ function Details({ data }) {
                     <span class="brandScholarshipDetails_calendarIcon__2-5hX">
                       <CalendarMonthIcon />
                       <p>Deadline : {data.closeingDate}</p>
+                    </span>
+                    <span class="brandScholarshipDetails_calendarIcon__2-5hX">
+                      <RoomIcon />
+                      <p>
+                        Status :{" "}
+                        {data.status[0].toUpperCase() +
+                          data.status.substring(1)}
+                      </p>
                     </span>
                     <article class="brandScholarshipDetails_sectionBox__yP4qi brandScholarshipDetails_firstElem__2pjgC">
                       <span class="brandScholarshipDetails_sectionTitle__2t6sl  sec-t">
@@ -196,6 +224,7 @@ function Details({ data }) {
                     benefit={ele.data().benefit}
                     deadline={ele.data().closeingDate}
                     viewlink={ele.id}
+                    logo={ele.data().logo}
                   />
                 );
               })}

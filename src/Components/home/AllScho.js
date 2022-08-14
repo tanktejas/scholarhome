@@ -252,6 +252,7 @@ function AllScho() {
             {schodata.map((ele) => {
               return (
                 <Card
+                  status={ele.data().status}
                   name={ele.data().name}
                   eligiblity={ele.data().eligiblity}
                   benefit={ele.data().benefit}

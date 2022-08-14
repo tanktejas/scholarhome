@@ -1,15 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Footer from "../footer/footer1";
 import "./dataform.css";
 import { db } from "../DB/firebase";
 
 import { collection, getFirestore, addDoc } from "firebase/firestore";
 import { orderBy, onSnapshot, doc } from "firebase/firestore";
+import { useParams } from "react-router-dom";
+
+import { query } from "firebase/firestore";
+import { logcont } from "../logincontext/authcontext";
+import { setDoc } from "firebase/firestore";
 
 function Dataform() {
+  const par = useParams();
+  const adminid = par.adminid;
+
+  const { user, logout } = useContext(logcont);
+
+  const [userall, setuserall] = useState([]); //for all user
+  const [stat, setsta] = useState(false); // for status
+  const [curruser, setcurr] = useState([]); // curr user
+
+  // console.log(user.e);
+
+  useEffect(() => {
+    setsta(true);
+    const query1 = query(collection(db, "users"));
+    onSnapshot(query1, (qS) => {
+      console.log(qS.docs[0].data());
+      qS.docs.map((item) => {
+        // alert(JSON.stringify(item.data().email));
+        if (item.data().email == user.email) {
+          setcurr(item);
+          setsta(false);
+        }
+      });
+    });
+  }, []);
+
   const [email, setEmail] = useState("");
   const [orgname, setOrgname] = useState("");
-  const [user, setUser] = useState("");
+  const [user1, setUser] = useState("");
   const [schoname, setSchoname] = useState("");
   const [about, setAbout] = useState("");
   const [mob, setMob] = useState("");
@@ -27,8 +58,11 @@ function Dataform() {
   const submit = () => {
     let benefit = bene.split(".");
     let docc = document.split(".");
-    let eligib = eli.split(".");
+    let eloign = eli.split(".");
     let process1 = proce.split(".");
+
+    let namespace = curruser.data().namespace;
+    let key = curruser.data().key;
 
     const scholarship = {
       name: schoname,
@@ -37,7 +71,7 @@ function Dataform() {
       category: cat.toLowerCase(),
       closeingDate: date.toString(),
       document: docc,
-      eligiblity: eligib,
+      eligiblity: eloign,
       isHandi: false,
       isMilitry: false,
       link: link,
@@ -46,7 +80,24 @@ function Dataform() {
       region: "India",
       state: "All",
       tag: orgname,
+      namespace: namespace,
+      key: key,
+      status: "active",
     };
+
+    let obj = curruser.data();
+
+    const ff = new Date();
+
+    const needtoadd = {
+      date: ff,
+      name: schoname,
+      status: "active",
+    };
+
+    obj.sc_posted.push(needtoadd);
+
+    setDoc(doc(db, "users", curruser.id), obj);
 
     addDoc(collection(db, "Scholarships"), scholarship)
       .then((result) => {
@@ -57,6 +108,10 @@ function Dataform() {
         alert(err);
       });
   };
+
+  if (stat) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div>
@@ -129,7 +184,7 @@ function Dataform() {
               <br />
               <input
                 type="text"
-                value={user}
+                value={user1}
                 onChange={(e) => setUser(e.target.value)}
                 name="lname"
                 class="form-input"
@@ -369,7 +424,6 @@ function Dataform() {
                 value={cat}
                 onChange={(e) => {
                   setcat(e.target.value);
-                  alert(e.target.value);
                 }}
                 required
               >

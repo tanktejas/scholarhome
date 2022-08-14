@@ -1,8 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { logcont } from "../logincontext/authcontext";
 import { logcontstu } from "../../Loginsignincontext/context";
+
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  doc,
+} from "firebase/firestore";
+import { db } from "../DB/firebase";
 
 import "../main.css";
 import "./plugins.min.css";
@@ -14,9 +23,23 @@ function Header() {
   const { user, logout } = useContext(logcont);
   const { student, slogout } = useContext(logcontstu);
   const [curruser, setuser] = useState(user == "no" ? null : user);
+  const [keyfordash, setkeyfordash] = useState("");
   const [currstudent, setcurrstudent] = useState(
     student == "no" ? null : student
   );
+
+  useEffect(() => {
+    const curremail = user?.email;
+
+    const query1 = query(collection(db, "users"));
+    onSnapshot(query1, (qS) => {
+      qS.docs.map((item) => {
+        if (item.data().email == curremail) {
+          setkeyfordash(item.id);
+        }
+      });
+    });
+  }, []);
 
   // for admin logout
   const Logout = () => {
@@ -25,20 +48,16 @@ function Header() {
       .then((ok) => {
         setuser(null);
       })
-      .catch((err) => {
-        alert(err);
-      });
+      .catch((err) => {});
   };
-
+  
   //student logout
   const SLogout = () => {
     slogout()
       .then((ok) => {
         setcurrstudent(null);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+      }) 
+      .catch((err) => {});
   };
 
   if (student == undefined) {
@@ -50,6 +69,7 @@ function Header() {
   }
 
   console.log(student);
+  const dashboardurl = "https://scholarhome-dashboard.vercel.app/" + keyfordash;
 
   return (
     <>
@@ -142,19 +162,21 @@ function Header() {
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Compititive Exam <br/> based scolarship
+                          Compititive Exam <br /> based scolarship
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Foreign Study <br/>based Scholarships
+                          Foreign Study <br />
+                          based Scholarships
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Indian Research <br/> Scholarship
+                          Indian Research <br /> Scholarship
                         </a>
 
                         <a href="#" className="dropdown-item">
-                          Foreign Research<br/> Scolarship
+                          Foreign Research
+                          <br /> Scolarship
                         </a>
                       </div>
                     </li>
@@ -200,6 +222,17 @@ function Header() {
                         <NavLink className="nav-link" to="/form">
                           Data Form
                         </NavLink>
+                      </li>
+                    )}
+                    {curruser && (
+                      <li className="nav-item">
+                        <a
+                          className="nav-link"
+                          href={dashboardurl}
+                          target="__tejas"
+                        >
+                          Dashboard
+                        </a>
                       </li>
                     )}
                     {curruser && (

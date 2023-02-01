@@ -108,7 +108,7 @@ function Header() {
                 </button>
 
                 <div
-                  className="collapse navbar-collapse spec"
+                  className="navbar-collapse spec"
                   id="navTrigger"
                   style={navicon}
                 >
